@@ -104,7 +104,7 @@ export const getMFOs = async (
   retryCount = 0
 ): Promise<MfoDetails[]> => {
   const MAX_RETRIES = 2;
-  const TIMEOUT_MS = 3000; // 3 секунд таймаут (Google botlar uchun optimallashtirildi)
+  const TIMEOUT_MS = 5000; // 3 секунд таймаут (Google botlar uchun optimallashtirildi)
 
   try {
     const url = new URL("https://api.mfoxa.com.ua/api/v1/mfos");
@@ -143,7 +143,7 @@ export const getMFOs = async (
       }
 
       const data: { data: MfoDetails[] } = await res.json();
-      return data.data;
+      return data.data || []; 
     } catch (error: unknown) {
       clearTimeout(timeoutId);
       
@@ -159,13 +159,11 @@ export const getMFOs = async (
         }
       }
       
-      if (error instanceof Error && error.name === 'AbortError') {
-        throw new Error("Request timeout - please try again");
-      }
-      throw error;
+      console.error('All retries failed, returning empty array');
+      return [];
     }
   } catch (error) {
     console.error("getMFOs error:", error);
-    throw error instanceof Error ? error : new Error("Failed to fetch MFO list");
+    return [];
   }
 };
