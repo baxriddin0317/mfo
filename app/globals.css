@@ -1,0 +1,191 @@
+/* Fonts are now loaded via next/font in layout.tsx - no @import needed */
+
+@import "tailwindcss";
+
+/* Swiper CSS - only import what's needed, loaded dynamically when Swiper is used */
+
+/* CSS-переменные */
+:root {
+  --Montserrat: "Montserrat", sans-serif;
+  --Jakarta: "Plus Jakarta Sans", sans-serif;
+  --Inter: "Inter", sans-serif;
+  --Manrope: "Manrope", sans-serif; /* ЗАМЕНА Formular */
+  --Jura: "Jura", sans-serif;
+  --DMSans: "DM Sans", sans-serif; /* ЗАМЕНА Graphik */
+  --Golos: "Golos Text", sans-serif;
+
+  --background: #ebebf9;
+  --foreground: #ebebf9;
+}
+
+/* Tailwind CSS override (если надо) */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--Montserrat);
+}
+
+/* Dark mode адаптация */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ebebf9;
+    --foreground: #ededed;
+  }
+}
+
+/* Основной стиль */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--Montserrat);
+}
+
+/* Пример: заголовки */
+h2 {
+  font-family: var(--Jakarta);
+}
+
+.slider {
+  -webkit-appearance: none;
+  height: 21px;
+  background: transparent;
+  position: relative;
+  z-index: 10;
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: 2px;
+  background: #724dea;
+  border-radius: 1px;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -9px; /* centers circle on track */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #724dea;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 0 0;
+  transition: background 0.3s ease;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #724dea;
+  border: none;
+  cursor: pointer;
+}
+
+/* Login Content Styles */
+.login-content h2 {
+  font-family: var(--Jakarta);
+  font-weight: 700;
+  font-size: 20px;
+  color: #000;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 640px) {
+  .login-content h2 {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .login-content h2 {
+    font-size: 30px;
+  }
+}
+
+.login-content h3 {
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+@media (min-width: 640px) {
+  .login-content h3 {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .login-content h3 {
+    font-size: 24px;
+  }
+}
+
+.login-content h4 {
+  font-weight: 700;
+  font-size: 14px;
+  color: #000;
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+@media (min-width: 640px) {
+  .login-content h4 {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .login-content h4 {
+    font-size: 18px;
+  }
+}
+
+.login-content p {
+  font-weight: 500;
+  font-size: 13px;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+  .login-content p {
+    font-size: 15px;
+  }
+}
+
+.login-content h2:first-child,
+.login-content h3:first-child,
+.login-content h4:first-child {
+  margin-top: 0;
+}
+
+.login-content ul,
+.login-content ol {
+  margin-bottom: 15px;
+  padding-left: 0;
+}
+
+.login-content li {
+  font-weight: 500;
+  font-size: 13px;
+  color: #000;
+  margin-bottom: 8px;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .login-content li {
+    font-size: 15px;
+  }
+}
